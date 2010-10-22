@@ -2,15 +2,17 @@ package org.beeherd.io
 
 import java.io.File
 
-object TempFile {
+object TempDir {
   /** 
-   * Create a temporary file for some use.  The file is deleted when done
+   * Create a temporary directory for some use.  The directory is deleted when done
    * using it.
    */
   def use[T](f: File =>  T): T = {
-    val tmp = File.createTempFile("bh-file", "tmp");
+    val tmp = File.createTempFile("bh-dir", "tmp");
     tmp.deleteOnExit;
     try {
+      tmp.delete();
+      tmp.mkdirs();
       f(tmp);
     } finally {
       try {
