@@ -16,7 +16,7 @@
 */
 package org.beeherd.io
 
-import java.io.{BufferedOutputStream, File, FileOutputStream}
+import java.io.{BufferedOutputStream, File, FileOutputStream, OutputStream}
 
 object FileUtil {
   /** 
@@ -38,7 +38,7 @@ object FileUtil {
   /**
    * Use some file for writing.  Clean is handled.
    */
-   def write[T](f: File)(fun: FileOutputStream => T): T = {
+   def write[T](f: File)(fun: OutputStream => T): T = {
     // I saw some Odersky speech where he had this concept applied to anything
     // that provided a close() method, which probably relies on reflection...
     val out = new BufferedOutputStream(new FileOutputStream(f));
