@@ -59,6 +59,7 @@ under the License.
   </repositories>
   
   <build>
+    <sourceDirectory>${basedir}/src/main/scala</sourceDirectory>
     <plugins>
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
